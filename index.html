@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploading Image with JavaScript</title>
+    <style>
+        /* add your style */
+        .upload_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+    height: 100vh;
+}
+.colr{
+    color:#8d4801;
+    font-family: 'san-serif';
+}
+
+#display_image{
+    width:50vw;
+    height: 70vh;
+    border: 1px solid #8d4801;
+    background-position: center;
+    background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover; 
+    /* background-image: ; */
+    /* box-shadow: 10px -9px 11px -5px rgba(120,128,121,0.64);
+-webkit-box-shadow: 10px -9px 11px -5px rgba(120,128,121,0.64);
+-moz-box-shadow: 10px -9px 11px -5px rgba(120,128,121,0.64); */
+box-shadow: 10px -9px 11px -5px rgba(77,212,113,0.64);
+-webkit-box-shadow: 10px -9px 11px -5px rgba(77,212,113,0.64);
+-moz-box-shadow: 10px -9px 11px -5px rgba(77,212,113,0.64);
+}
+
+#image_input{
+    width: 20vw;
+}
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+ 
+
+ <div class="card">
+    <h1 class="card-header text-center colr">IMAGE PREVIEWER</h1>
+ </div>
+
+
+
+ <div class="card  upload_btn">
+     <img id="display_image" src="#" alt="Upload your Image to preview">
+    <input type="file" class="btn btn-success" id="image_input" accept="image/jpg, image,png">
+ </div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    // add you script
+    const image_input = document.querySelector("#image_input");
+var uploaded_image;
+
+image_input.addEventListener('change', function() {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => {
+    uploaded_image = reader.result;
+    document.querySelector("#display_image").setAttribute("src",`${uploaded_image}`);
+  });
+  reader.readAsDataURL(this.files[0]);
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>
